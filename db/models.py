@@ -1,3 +1,5 @@
+import hashlib
+
 from sqlalchemy import Column, Integer, String, DateTime, func, Text, ForeignKey
 from sqlalchemy.orm import relationship
 
@@ -21,7 +23,5 @@ class Post(Base):
     title = Column(String(100))
     description = Column(Text)
     created_at = Column(DateTime, server_default=func.now())
-    updated_at = Column(DateTime, onupdate=func.now())
-    user_id = Column(Integer, ForeignKey('users.id'), ondelete='CASCADE')
-
+    user_id = Column(Integer, ForeignKey('users.id'))
 
